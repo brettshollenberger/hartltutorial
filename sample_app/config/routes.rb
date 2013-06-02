@@ -1,9 +1,19 @@
 SampleApp::Application.routes.draw do
-  get "static_pages/home"
+  get "users/new"
 
-  get "static_pages/help"
+  resources :users
 
-  get "static_pages/about"
+  root to: "static_pages#home", as: "home"
+
+  match "/help", to: "static_pages#help", as: "help"
+
+  match "/about", to: "static_pages#about", as: "about"
+
+  get "/static_pages/contact"
+
+  match "/contact", to: "static_pages#contact"
+
+  match "/:all", to: "static_pages#home"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
